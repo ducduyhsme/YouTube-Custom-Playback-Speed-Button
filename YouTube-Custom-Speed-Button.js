@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Custom Speed Button
-// @version      1.0
-// @description  Add a movable custom speed button on YouTube videos, fixed to page layout not screen position.
+// @version      1.1
+// @description  Add right click to hide icon
 // @match        https://www.youtube.com/*
 // @grant        none
 // ==/UserScript==
@@ -32,9 +32,7 @@
         img.style.opacity = '0.85';
         img.title = 'Set custom video speed';
 
-        btn.appendChild(img);
-        player.appendChild(btn);
-
+        // Left click to set speed
         img.addEventListener('click', (e) => {
             e.stopPropagation();
             const speed = prompt('Enter playback speed (e.g. 0.75, 1.5):');
@@ -43,6 +41,15 @@
                 video.playbackRate = parseFloat(speed);
             }
         });
+
+        // Right click to hide the button
+        img.addEventListener('contextmenu', (e) => {
+            e.preventDefault(); // Prevent default context menu
+            btn.style.display = 'none'; // Hide the icon
+        });
+
+        btn.appendChild(img);
+        player.appendChild(btn);
 
         let isDragging = false;
         let offsetX, offsetY;
