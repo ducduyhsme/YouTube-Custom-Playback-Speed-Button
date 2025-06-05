@@ -1,8 +1,7 @@
 // ==UserScript==
 // @name         YouTube Custom Speed Button
-// @version      1.2
-// @description  Save your setting after changed
-// @author       You
+// @version      1.3
+// @description  Supports fractions like 1/2, 3/4, etc.
 // @match        https://www.youtube.com/*
 // @grant        none
 // ==/UserScript==
@@ -15,7 +14,7 @@
     function createSpeedButton() {
         if (document.getElementById('custom-speed-btn')) return;
 
-        const player = document.querySelector('.html5-video-player');
+        const player = document.querySelector('#below');
         if (!player) return;
 
         const btn = document.createElement('div');
@@ -33,32 +32,22 @@
         img.style.opacity = '0.85';
         img.title = 'Set custom video speed';
 
-        // Left click to set speed
-        const savedSpeed = localStorage.getItem('customPlaybackSpeed');
-        if (savedSpeed && !isNaN(savedSpeed)) {
-            const video = document.querySelector('video');
-            if (video) {
-                video.playbackRate = parseFloat(savedSpeed);
-            }
-        }
-        img.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const speed = prompt('Enter playback speed (e.g. 0.75, 1.5):');
-            const video = document.querySelector('video');
-            if (video && !isNaN(speed)) {
-                video.playbackRate = parseFloat(speed);
-                localStorage.setItem('customPlaybackSpeed', speed);
-            }
-        });
-
-        // Right click to hide the button
-        img.addEventListener('contextmenu', (e) => {
-            e.preventDefault(); // Prevent default context menu
-            btn.style.display = 'none'; // Hide the icon
-        });
-
         btn.appendChild(img);
         player.appendChild(btn);
+
+        img.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const speed = prompt('Enter playback speed (e.g. 1.25 or 3/4):');
+            const video = document.querySelector('video');
+            try {
+                const fraction = speed.includes('/') ? eval(speed) : parseFloat(speed);
+                if (video && !isNaN(fraction)) {
+                    video.playbackRate = fraction;
+                }
+            } catch (error) {
+                console.error('Invalid input for playback speed:', error);
+            }
+        });
 
         let isDragging = false;
         let offsetX, offsetY;
@@ -72,8 +61,9 @@
 
         document.addEventListener('mousemove', (e) => {
             if (isDragging) {
-                btn.style.left = `${e.clientX - offsetX - player.getBoundingClientRect().left}px`;
-                btn.style.top = `${e.clientY - offsetY - player.getBoundingClientRect().top}px`;
+                btn.style.position = 'absolute';
+                btn.style.left = `${e.pageX - offsetX}px`;
+                btn.style.top = `${e.pageY - offsetY}px`;
             }
         });
 
@@ -83,7 +73,7 @@
     }
 
     const observer = new MutationObserver(() => {
-        const player = document.querySelector('.html5-video-player');
+        const player = document.querySelector('#below');
         if (player) {
             createSpeedButton();
         }
