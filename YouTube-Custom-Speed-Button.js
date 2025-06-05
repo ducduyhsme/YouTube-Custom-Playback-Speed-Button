@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         YouTube Custom Speed Button
-// @version      1.1
-// @description  Add right click to hide icon
+// @version      1.2
+// @description  Save your setting after changed
+// @author       You
 // @match        https://www.youtube.com/*
 // @grant        none
 // ==/UserScript==
@@ -33,12 +34,20 @@
         img.title = 'Set custom video speed';
 
         // Left click to set speed
+        const savedSpeed = localStorage.getItem('customPlaybackSpeed');
+        if (savedSpeed && !isNaN(savedSpeed)) {
+            const video = document.querySelector('video');
+            if (video) {
+                video.playbackRate = parseFloat(savedSpeed);
+            }
+        }
         img.addEventListener('click', (e) => {
             e.stopPropagation();
             const speed = prompt('Enter playback speed (e.g. 0.75, 1.5):');
             const video = document.querySelector('video');
             if (video && !isNaN(speed)) {
                 video.playbackRate = parseFloat(speed);
+                localStorage.setItem('customPlaybackSpeed', speed);
             }
         });
 
