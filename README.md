@@ -4,7 +4,7 @@ This userscript help you to set any value for the playback speed of each video (
 # Installation
 To install the Tampermonkey userscript from the provided GitHub link, follow these steps:
   1. Make sure you have [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/) extension installed in your browser.
-  2. Open the provided GitHub link: 
+  2. Open the provided GitHub link: [https://github.com/ducduyhsme/YouTube-Custom-Speed-Button/raw/main/YouTube-Custom-Speed-Button.js](https://github.com/ducduyhsme/YouTube-Custom-Speed-Button/raw/main/YouTube-Custom-Speed-Button.js)
   3. Tampermonkey should automatically detect the userscript and open a new tab with the installation prompt.
 
 Once installed, the userscript will be active and ready to use.
