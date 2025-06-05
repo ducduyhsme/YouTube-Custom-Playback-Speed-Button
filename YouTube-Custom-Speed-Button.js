@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name         YouTube Custom Speed Button
+// @namespace    http://tampermonkey.net/
 // @version      1.4
 // @description  Saves setting across video whenever it is in playlist or not. Somehow version 1.2 is not working so I fixed it
+// @author       You
 // @match        https://www.youtube.com/*
 // @grant        none
 // ==/UserScript==
