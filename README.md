@@ -17,3 +17,6 @@ Once installed, the userscript will be active and ready to use.
 2. My setting is gone after the update!
 
   * Make sure you download and run [this .bat file](https://github.com/ducduyhsme/YouTube-Custom-Speed-Button/blob/main/backup%2C%20detect%20and%20import%20(manually).bat) before updating, otherwise all your saved settings will be lost.
+3. It doesn't apply the value after I save!
+
+  * Restart the script and reload page (F5)
