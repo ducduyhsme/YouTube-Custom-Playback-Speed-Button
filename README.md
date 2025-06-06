@@ -9,6 +9,10 @@ To install the Tampermonkey userscript from the provided GitHub link, follow the
 
 Once installed, the userscript will be active and ready to use.
 
-Note: If nothing happens and are using a Chromium browser (Chrome, Edge, especially Brave,...), do [this](https://www.tampermonkey.net/faq.php?version=5.3.3&ext=dhdg#Q209)
 # Shortcut
   - Right click the icon: Hide
+
+# FAQ
+1. If nothing happens and are using a Chromium browser (Chrome, Edge, especially Brave,...), do [this](https://www.tampermonkey.net/faq.php?version=5.3.3&ext=dhdg#Q209)
+2. My setting is gone after the update!
+=> Make sure you download and run [this .bat file](https://github.com/ducduyhsme/YouTube-Custom-Speed-Button/blob/main/backup%2C%20detect%20and%20import%20(manually).bat) before updating, otherwise all your saved settings will be lost.
