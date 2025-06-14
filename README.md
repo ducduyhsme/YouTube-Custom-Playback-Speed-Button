@@ -9,9 +9,6 @@ To install the Tampermonkey userscript from the provided GitHub link, follow the
 
 Once installed, the userscript will be active and ready to use.
 
-# Shortcut
-  - Right click the icon: Hide
-
 # FAQ
 1. If nothing happens and are using a Chromium browser (Chrome, Edge, especially Brave,...), do [this](https://www.tampermonkey.net/faq.php?version=5.3.3&ext=dhdg#Q209)
 2. My setting is gone after the update!
